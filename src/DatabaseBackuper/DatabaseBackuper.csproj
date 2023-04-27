@@ -17,14 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Destinations\DatabaseBackuper.Destinations.GDrive\DatabaseBackuper.Destinations.GDrive.csproj" />
-      <ProjectReference Include="..\destinations\DatabaseBackuper.Destinations\DatabaseBackuper.Destinations.csproj" />
-      <ProjectReference Include="..\sources\DatabaseBackuper.Sources.Postgres\DatabaseBackuper.Sources.Postgres.csproj" />
+      <ProjectReference Include="..\DatabaseBackuper.Destinations.GDrive\DatabaseBackuper.Destinations.GDrive.csproj" />
+      <ProjectReference Include="..\DatabaseBackuper.Sources.Postgres\DatabaseBackuper.Sources.Postgres.csproj" />
     </ItemGroup>
 </Project>

@@ -24,8 +24,18 @@ public static class ShellHelper
         };
         process.Exited += (sender, args) =>
         {
-            logger.Error(process.StandardError.ReadToEnd());
-            logger.Information(process.StandardOutput.ReadToEnd());
+            var errors = process.StandardError.ReadToEnd();
+            if (!string.IsNullOrWhiteSpace(errors))
+            {
+                logger.Error(errors);
+            }
+
+            var output = process.StandardOutput.ReadToEnd();
+            if (!string.IsNullOrWhiteSpace(output))
+            {
+                logger.Information(output);
+            }
+       
             if (process.ExitCode == 0)
             {
                 source.SetResult(0);

@@ -1,3 +1,4 @@
+using DatabaseBackuper.Framework;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Services;
@@ -28,7 +29,8 @@ public class GDriveDatabaseBackupDestination: IDatabaseBackupDestination
         {
             Name = fileName,
             Parents = new List<string> { gDriveInformation.DirectoryId },
-            CreatedTime = DateTime.UtcNow
+            CreatedTimeRaw = DateTime.UtcNow.ToRFC3339(),
+            ModifiedTimeRaw = DateTime.UtcNow.ToRFC3339()
         };
         
         await using var stream = new FileStream(filePath, FileMode.Open);
@@ -42,13 +44,7 @@ public class GDriveDatabaseBackupDestination: IDatabaseBackupDestination
             throw new Exception($"Failed to upload file: {results.Exception.Message}");
         }
     }
-
-    public Task DeletePreviousBackupsAsync(TimeSpan olderThan,
-        IDatabaseBackupDestinationInformation databaseBackupDestinationInformation, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public async Task RemovePreviousBackupsAsync(
         DateTime olderThan,
         IDatabaseBackupDestinationInformation databaseBackupDestinationInformation, 
@@ -65,6 +61,7 @@ public class GDriveDatabaseBackupDestination: IDatabaseBackupDestination
 
         var getFilesRequest = service.Files.List();
         getFilesRequest.Q = $"'{gDriveInformation.DirectoryId}' in parents";
+        getFilesRequest.Fields = "*";
         
         var files = await getFilesRequest.ExecuteAsync(cancellationToken);
         var filesToDelete = files.Files
