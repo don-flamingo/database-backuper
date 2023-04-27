@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: Build & Push
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,7 +20,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag database-backuper:${{github.run_number}}
     - name: Push the Docker image
-      run: docker push database-backuper:${{github.run_number}}
+      run: docker push rogaliusz/database-backuper:${{github.run_number}}
 
 
   
