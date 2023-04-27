@@ -1,7 +1,6 @@
 # Database Backuper
 
-Trival .net worker to create regular database backups by cron schedule. After creation service will upload it on the secured storage (destination).  
-Currently, worker can handle.
+Trival .net worker to create regular database backups by cron schedule. After creation service will upload it on the secured storage (destination).
 
 ### Databases
 - postgres
