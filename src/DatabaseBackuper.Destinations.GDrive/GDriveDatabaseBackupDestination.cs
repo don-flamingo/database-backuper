@@ -65,7 +65,7 @@ public class GDriveDatabaseBackupDestination: IDatabaseBackupDestination
         
         var files = await getFilesRequest.ExecuteAsync(cancellationToken);
         var filesToDelete = files.Files
-            .Where(x => x.CreatedTime < olderThan)
+            .Where(x => x.CreatedTime.HasValue && x.CreatedTime.Value.ToUniversalTime() < olderThan)
             .ToList();
 
         foreach (var file in filesToDelete)

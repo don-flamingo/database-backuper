@@ -150,7 +150,9 @@ public class Worker : BackgroundService
                 _databaseBackupDestinations.FirstOrDefault(x => x.Type == databaseBackupDestinationInformation.Type)
                 ?? throw new MissingDatabaseDestinationTypeException(databaseBackupDestinationInformation.Type);
 
-            await destination.RemovePreviousBackupsAsync(removeOlderThanDateTime, databaseBackupDestinationInformation,
+            await destination.RemovePreviousBackupsAsync(
+                removeOlderThanDateTime,
+                databaseBackupDestinationInformation,
                 cancellationToken);
         }
     }
