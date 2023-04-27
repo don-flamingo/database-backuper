@@ -1,0 +1,10 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea/.idea.DatabaseBackuper/.idea/
+
+.DS_Store
+
+src/DatabaseBackuper/tmp/
