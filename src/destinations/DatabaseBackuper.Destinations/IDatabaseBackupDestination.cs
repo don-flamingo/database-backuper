@@ -6,5 +6,5 @@ public interface IDatabaseBackupDestination
 
     Task UploadBackupAsync(string filePath, IDatabaseBackupDestinationInformation databaseBackupDestinationInformation, CancellationToken cancellationToken);
     
-    Task DeletePreviousBackupsAsync(TimeSpan olderThan, IDatabaseBackupDestinationInformation databaseBackupDestinationInformation, CancellationToken cancellationToken);
+    Task RemovePreviousBackupsAsync(DateTime olderThan, IDatabaseBackupDestinationInformation databaseBackupDestinationInformation, CancellationToken cancellationToken);
 }

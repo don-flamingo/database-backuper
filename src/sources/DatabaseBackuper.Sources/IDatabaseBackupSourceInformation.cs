@@ -5,5 +5,4 @@ public interface IDatabaseBackupSourceInformation
     string Type { get; }
     string DestinationKey { get; }
     string Database { get; }
-    string BackupName { get; }
 }
