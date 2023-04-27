@@ -1,4 +1,4 @@
-# database-backuper
+# Database Backuper
 
 Trival .net worker to create regular database backups by cron schedule. After creation service will upload it on the secured storage (destination).  
 Currently, worker can handle.
@@ -43,4 +43,10 @@ docker run --detach \
     rogaliusz/database-backuper:7
 ```
 
-Enjoy
+### Postgres
+Working on the pg_dump and connection to the database by username & password.
+
+### Google Drive
+Working by the json credentials, that is the reason why is good to mount credentials volume.
+
+Enjoy :flamingo:
