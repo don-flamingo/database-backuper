@@ -18,7 +18,7 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag database-backuper:${{github.run_number}}
+      run: docker build . --file Dockerfile --tag rogaliusz/database-backuper:${{github.run_number}}
     - name: Push the Docker image
       run: docker push rogaliusz/database-backuper:${{github.run_number}}
 
