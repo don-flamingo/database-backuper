@@ -8,3 +8,5 @@ riderModule.iml
 .DS_Store
 
 src/DatabaseBackuper/tmp/
+
+.idea/.idea.PostgresBackupService/.idea/
